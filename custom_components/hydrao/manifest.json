@@ -1,0 +1,13 @@
+{
+    "domain": "hydrao",
+    "name": "Hydrao",
+    "codeowners": [
+        "@sebcaps"
+    ],
+    "config_flow": true,
+    "documentation": "https://github.com/sebcaps/hydrao",
+    "integration_type": "device",
+    "iot_class": "cloud_polling",
+    "issue_tracker": "https://github.com/sebcaps/hydrao/issues",
+    "version": "0.0.1"
+}
