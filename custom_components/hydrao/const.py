@@ -49,7 +49,7 @@ SHOWER_SENSOR: tuple[HydraoShowerSensorEntityDesc, ...] =(
         key="trend",
         name="Tendance",
         json_key="trend",
-        unit_of_measurement="%"
+        unit_of_measurement="%",
         icon="mdi:chart-line-variant"
     ),
     HydraoShowerSensorEntityDesc(
