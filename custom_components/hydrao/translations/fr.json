@@ -1,0 +1,26 @@
+{
+    "config": {
+        "error": {
+            "auth": "Impossible de recupérer le token. Vérifiez vos identifiants",
+            "devices": "Impossible de récuperer les dispositifs"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "email": "Nom d'utilisateur",
+                    "password": "Mot de passe",
+                    "api_key": "API Key"
+                },
+                "description": "Entrez vos identifiants Hydrao",
+                "title": "Authentification"
+            },
+            "devices": {
+                "data": {
+                    "devices": ""
+                },
+                "description": "Choisissez les dispositifs",
+                "title": "Dispositif"
+            }
+        }
+    }
+}

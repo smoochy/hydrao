@@ -1,0 +1,7 @@
+{
+    "name": "Hydrao",
+    "domain": "hydrao",
+    "country": "fr",
+    "homeassistant": "2023.4.0",
+    "render_readme": true
+}
