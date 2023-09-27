@@ -1,5 +1,8 @@
 {
     "config": {
+        "abort": {
+            "already_configured": "Une seule configuration est autorisée"
+        },
         "error": {
             "auth": "Impossible de recupérer le token. Vérifiez vos identifiants",
             "devices": "Impossible de récuperer les dispositifs"
@@ -21,6 +24,20 @@
                 "description": "Choisissez les dispositifs",
                 "title": "Dispositif"
             }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "Choix des dispositifs",
+                "description": "Choisissez les dispositifs",
+                "data": {
+                    "devices": "devices"
+                }
+            }
+        },
+        "error": {
+            "auth": "Impossible de recupérer le token. Vérifiez vos identifiants"
         }
     }
 }
