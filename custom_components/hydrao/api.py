@@ -1,8 +1,9 @@
 import logging
 import aiohttp
 from aiohttp.client import ClientTimeout, ClientError
+from datetime import datetime, timedelta
 from homeassistant.const import CONF_EMAIL, CONF_PASSWORD, CONF_API_KEY
-from .const import AUTH_URL, DATA_URL, CLIENT_TIMEOUT,ERROR_MESSAGE_429
+from .const import AUTH_URL, DATA_URL, ME_URL, CLIENT_TIMEOUT,ERROR_MESSAGE_429, STAT_URL
 
 
 _LOGGER = logging.getLogger(__name__)
@@ -23,6 +24,7 @@ class HydraoAPI:
         self._token = None
         self._data = None
         self._headers={}
+        # self._expiry = None
 
     async def async_get_token(self):
         """Get user token to allow request"""
@@ -41,7 +43,9 @@ class HydraoAPI:
         if request.status == 200:
             resp = await request.json()
             self._token = resp["access_token"]
-            _LOGGER.debug("got response %s ", resp)
+            # self._expiry = datetime.now()+timedelta(seconds=int(resp["expires_in"]))
+            _LOGGER.debug("Got response %s ", resp)
+            # _LOGGER.debug("Token will expire at  %s ", self._expiry)
         elif request.status ==429: #Too many request
             _LOGGER.error(
                 ERROR_MESSAGE_429
@@ -49,11 +53,13 @@ class HydraoAPI:
             raise ValueError
         else:
             _LOGGER.error(
-               ERROR_MESSAGE_429
+               'Failed to get token with status %s', request.status
             )
             raise ValueError
 
     async def async_get_devices(self):
+        if not self._token:
+            await self.async_get_token()
         self._headers["Authorization"]=f"Bearer {self._token}"
         request = await self._session.get(
             DATA_URL,
@@ -98,10 +104,64 @@ class HydraoAPI:
             raise ValueError
 
     async def async_get_device_stat(self, uuid):
-        if not self._token:
+        """Get device stat"""
+        if not self._token :
+            _LOGGER.debug('## No token or token expired, need to get a new one')
             await self.async_get_token()
+        self._headers["Authorization"]=f"Bearer {self._token}"
         request = await self._session.get(
             f"{DATA_URL}/{uuid}/stats",
+            headers = self._headers,
+        )
+        if request.status == 200:
+            resp = await request.json()
+            _LOGGER.debug("got response %s ", resp)
+            self._data= resp
+            return resp
+        elif request.status == 429: #Too many request
+            _LOGGER.error(
+               ERROR_MESSAGE_429
+            )
+            raise ValueError
+        else:
+            _LOGGER.error(
+                "Failed to get devices info, with status %s ", request.status
+            )
+            raise ValueError
+
+    async def async_get_user_data(self):
+        """Get user data"""
+        if not self._token or datetime.now()> self._expiry:
+            _LOGGER.debug('## No token or token expired, need to get a new one')
+            await self.async_get_token()
+
+        request = await self._session.get(
+            ME_URL,
+            headers = self._headers,
+        )
+        if request.status == 200:
+            resp = await request.json()
+            _LOGGER.debug("got response %s ", resp)
+            self._data= resp
+            return resp
+        elif request.status == 429: #Too many request
+            _LOGGER.error(
+               ERROR_MESSAGE_429
+            )
+            raise ValueError
+        else:
+            _LOGGER.error(
+                "Failed to get devices info, with status %s ", request.status
+            )
+            raise ValueError
+    async def async_get_stat(self):
+        """Get stat"""
+        if not self._token or datetime.now()> self._expiry:
+            _LOGGER.debug('## No token or token expired, need to get a new one')
+            await self.async_get_token()
+
+        request = await self._session.get(
+            STAT_URL,
             headers = self._headers,
         )
         if request.status == 200:

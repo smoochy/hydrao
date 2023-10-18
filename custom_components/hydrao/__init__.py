@@ -64,12 +64,13 @@ class HydraoApiCoordinator(DataUpdateCoordinator):
 
 
     async def _update_method(self):
+        await self.api.async_get_token() #get a new token
         data = await self.api.async_get_device_stat(self.uuid)
         if data is not None and len(data) > 0:
             return True
         else:
             self.async_set_update_error(
-                f'No Data from HYDRAO'
+                'No Data from HYDRAO'
             )
             return False
 

@@ -32,7 +32,7 @@
                 "title": "Choix des dispositifs",
                 "description": "Choisissez les dispositifs",
                 "data": {
-                    "devices": "devices"
+                    "devices": ""
                 }
             }
         },
