@@ -1,18 +1,15 @@
 """ Implements the sensors component """
 import logging
-from typing import Any, Coroutine
 from homeassistant.core import HomeAssistant
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.components.sensor import (
-    SensorEntity,
-    SensorEntityDescription,
-)
-from homeassistant.components.update import (
-    UpdateDeviceClass,
-    UpdateEntity,
-    UpdateEntityFeature,
-)
+    SensorEntity)
+# from homeassistant.components.update import (
+#     UpdateDeviceClass,
+#     UpdateEntity,
+#     UpdateEntityFeature,
+# )
 from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.device_registry import DeviceEntryType
 
@@ -24,8 +21,8 @@ from .__init__ import (HydraoApiCoordinator)
 from .const import (
     DOMAIN,
     SHOWER_SENSOR,
-    TITLE,
     CONF_DEVICES,
+    TITLE,
     HydraoShowerSensorEntityDesc,
 )
 
@@ -51,7 +48,7 @@ async def async_setup_entry(
     async_add_entities(entities, True)
 
 class HydraoShower(SensorEntity, CoordinatorEntity):
-
+    """Class reprenting Hydrao Shower"""
     def __init__(
         self,
         hass: HomeAssistant,
@@ -77,7 +74,7 @@ class HydraoShower(SensorEntity, CoordinatorEntity):
         self._attr_device_info = DeviceInfo(
             name=f"{shower_info['label']}",
             identifiers={
-                (DOMAIN, f"{shower_info['device_uuid']}-{shower_info['label']}")
+                (DOMAIN, f"{shower_info['device_uuid']}")
             },
             manufacturer="Hydrao",
             model=f"{shower_info['type']}",
