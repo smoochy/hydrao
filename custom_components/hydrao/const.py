@@ -36,6 +36,8 @@ SHOWER_SENSOR: tuple[HydraoShowerSensorEntityDesc, ...] =(
         key="total",
         name="Volume total",
         unit_of_measurement="L",
+        native_unit_of_measurement="L",
+        device_class= SensorDeviceClass.VOLUME,
         icon= "mdi:water",
         json_key="total_volume",
 
@@ -45,6 +47,7 @@ SHOWER_SENSOR: tuple[HydraoShowerSensorEntityDesc, ...] =(
         name="Volume moyen",
         unit_of_measurement="L",
         native_unit_of_measurement="L",
+        device_class= SensorDeviceClass.VOLUME,
         icon= "mdi:water",
         json_key="volume_average"
     ),
