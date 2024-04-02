@@ -1,7 +1,7 @@
 
 # Hydrao pour Home Assistant
 
-[Click here for English version](README_US.md)
+[Click here for English version](./README_US.md)
 
 Intégration pour remonter les informations de ces pommeaux de douches Hydrao dans Home Assistant.
 
