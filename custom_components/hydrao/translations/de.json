@@ -10,7 +10,7 @@
         "step": {
             "user": {
                 "data": {
-                    "email": "Benutzername (normallerweise Emailadresse)",
+                    "email": "Benutzername (normalerweise Emailadresse)",
                     "password": "Passwort",
                     "api_key": "API Schlüssel"
                 },
