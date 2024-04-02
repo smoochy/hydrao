@@ -15,7 +15,7 @@
                     "api_key": "API Key"
                 },
                 "description": "Enter your Hydrao login credentials",
-                "title": "Authentification"
+                "title": "Authentication"
             },
             "devices": {
                 "data": {

@@ -1,5 +1,7 @@
 # Hydrao for Home Assistant
 
+[Cliquez ici pour le texte français](README.md)
+
 Integration to report information from the Hydrao shower heads in Home Assistant.
 
 ## Installation
