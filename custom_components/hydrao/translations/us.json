@@ -1,0 +1,43 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Only a single configuration is allowed"
+        },
+        "error": {
+            "auth": "Unable to retrieve token. Check your login details",
+            "devices": "Unable to retrieve devices"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "email": "User name (normally email address)",
+                    "password": "Password",
+                    "api_key": "API Key"
+                },
+                "description": "Enter your Hydrao login credentials",
+                "title": "Authentication"
+            },
+            "devices": {
+                "data": {
+                    "devices": ""
+                },
+                "description": "Select device(s)",
+                "title": "Device"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "Device selection",
+                "description": "Select device(s)",
+                "data": {
+                    "devices": ""
+                }
+            }
+        },
+        "error": {
+            "auth": "Unable to retrieve token. Check your login details"
+        }
+    }
+}

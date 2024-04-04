@@ -1,0 +1,43 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Nur eine einzige Konfiguration ist erlaubt"
+        },
+        "error": {
+            "auth": "Token konnte nicht abgerufen werden. Überprüfe deine Anmeldedaten",
+            "devices": "Geräte können nicht abgerufen werden"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "email": "Benutzername (normalerweise Emailadresse)",
+                    "password": "Passwort",
+                    "api_key": "API Schlüssel"
+                },
+                "description": "Gib deine Hydrao Anmeldedaten ein",
+                "title": "Authentifizierung"
+            },
+            "devices": {
+                "data": {
+                    "devices": ""
+                },
+                "description": "Gerät(e) auswählen",
+                "title": "Geräteauswahl"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "Geräteauswahl",
+                "description": "Gerät(e) auswählen",
+                "data": {
+                    "devices": ""
+                }
+            }
+        },
+        "error": {
+            "auth": "Token konnte nicht abgerufen werden. Überprüfe deine Anmeldedaten"
+        }
+    }
+}
